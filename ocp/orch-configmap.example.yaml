@@ -1,0 +1,17 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: v1
+data:
+  deploy.env: |
+    NODE_ENV=production
+    WATSON_ASSISTANT_SERVICEURL=https://api.us-south.assistant.watson.cloud.ibm.com
+    WATSON_ASSISTANT_APIKEY=<WA API key>
+    WATSON_ASSISTANT_DRAFT_ENVIRONMENT_ID=<WA Assistant Draft Environment ID>
+    WATSON_ASSISTANT_VERSION=2021-11-27
+kind: ConfigMap
+metadata:
+  name: orch-configmap
+  namespace: <namespace>
+

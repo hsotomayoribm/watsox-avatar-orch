@@ -1,0 +1,43 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: orch-server
+  name: orch-server
+  namespace: <namespace>
+spec:
+  selector:
+    matchLabels:
+      app: orch-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: orch-server
+    spec:
+      volumes:
+        - name: orch-configmap-volume
+          configMap:
+            name: orch-configmap
+      containers:
+        - image: <image>
+          name: orch-server
+          volumeMounts:
+            - name: orch-configmap-volume
+              mountPath: /app/.env
+              subPath: deploy.env
+          ports:
+            - containerPort: 443
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: orch-server
+spec:
+  selector:
+    app: orch-server
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
