@@ -26,7 +26,7 @@ LABEL name="Soul Machines Watson NeuralSeek Orchestrator" \
 
 ENV NODE_ENV production
 
-ENV EXPRESS_SERVER=localhost
+ENV EXPRESS_SERVER=wx-avatar-ui.15frzqybga04.us-south.codeengine.appdomain.cloud
 ENV EXPRESS_PORT=3001
 ENV SSL_CERT=./certs/localhost.crt
 ENV SSL_KEY=./certs/localhost.key
